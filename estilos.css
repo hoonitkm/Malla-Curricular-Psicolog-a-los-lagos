@@ -1,1 +1,185 @@
+/* Paleta de colores */
+:root {
+    --beige-claro: #F7E9C6;
+    --celeste-pastel: #71C6D2;
+    --rosa-pastel-claro: #F6C1BF;
+    --amarillo-mostaza-pastel: #E5BF63;
+    --verde-menta-claro: #C7DFBF;
+    --cafe-oscuro: #76665F;
+    --rosa-aprobado: #FFB0CB;
+    --notificacion-fondo: #FFC1CC;
+    --notificacion-texto: #A94064;
+}
 
+/* Tipografía y estilos generales */
+body {
+    font-family: 'Merriweather', serif;
+    background-color: var(--beige-claro);
+    color: var(--cafe-oscuro);
+    margin: 0;
+    padding: 20px;
+    line-height: 1.6;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    text-align: center;
+}
+
+.container {
+    width: 100%;
+    max-width: 1200px;
+    padding: 20px;
+}
+
+.main-title {
+    font-family: 'Merriweather', serif;
+    font-size: 2.5em;
+    font-weight: 700;
+    color: var(--cafe-oscuro);
+    margin-bottom: 5px;
+}
+
+.subtitle {
+    font-size: 1em;
+    color: var(--cafe-oscuro);
+    margin-bottom: 20px;
+    font-family: 'Merriweather', serif;
+}
+
+/* Contenedor de la malla */
+.grid-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 20px;
+}
+
+.semestre {
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    transition: transform 0.3s ease;
+}
+
+.semestre:hover {
+    transform: translateY(-5px);
+}
+
+.semestre-title {
+    font-size: 1.5em;
+    font-weight: 700;
+    margin-bottom: 15px;
+    text-align: center;
+    color: var(--cafe-oscuro);
+}
+
+/* Colores de fondo de los semestres */
+.semestre:nth-child(5n+1) { background-color: var(--verde-menta-claro); }
+.semestre:nth-child(5n+2) { background-color: var(--rosa-pastel-claro); }
+.semestre:nth-child(5n+3) { background-color: var(--celeste-pastel); }
+.semestre:nth-child(5n+4) { background-color: var(--amarillo-mostaza-pastel); }
+.semestre:nth-child(5n+5) { background-color: var(--verde-menta-claro); }
+
+/* Estilos de los ramos */
+.ramo {
+    background-color: rgba(255, 255, 255, 0.7);
+    padding: 10px 15px;
+    margin-bottom: 10px;
+    border-radius: 8px;
+    cursor: pointer;
+    font-weight: 700;
+    transition: background-color 0.3s, color 0.3s, transform 0.2s;
+    text-align: left;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+/* Efectos al pasar el cursor (hover) */
+.ramo:hover {
+    transform: scale(1.03);
+}
+
+.ramo.semestre-1:hover { background-color: var(--celeste-pastel); }
+.ramo.semestre-2:hover { background-color: var(--verde-menta-claro); }
+.ramo.semestre-3:hover { background-color: var(--rosa-pastel-claro); }
+.ramo.semestre-4:hover { background-color: var(--amarillo-mostaza-pastel); }
+.ramo.semestre-5:hover { background-color: var(--celeste-pastel); }
+.ramo.semestre-6:hover { background-color: var(--verde-menta-claro); }
+.ramo.semestre-7:hover { background-color: var(--rosa-pastel-claro); }
+.ramo.semestre-8:hover { background-color: var(--amarillo-mostaza-pastel); }
+.ramo.semestre-9:hover { background-color: var(--celeste-pastel); }
+.ramo.semestre-10:hover { background-color: var(--verde-menta-claro); }
+
+/* Estilos para ramos aprobados */
+.ramo.aprobado {
+    background-color: var(--rosa-aprobado);
+    color: #9c606f;
+    text-decoration: line-through;
+    cursor: pointer; /* Se mantiene el cursor para poder desmarcarlo */
+    opacity: 0.6;
+    transform: none;
+}
+
+.ramo.aprobado:hover {
+    transform: none;
+}
+
+/* Estilos para ramos bloqueados */
+.ramo.bloqueado {
+    cursor: not-allowed;
+    opacity: 0.5;
+}
+
+/* Contenedor y estilos de notificación */
+.notification-container {
+    position: fixed;
+    top: 120px; /* Ajusta la posición para que esté debajo del título */
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 1000;
+    pointer-events: none;
+    width: 100%;
+    max-width: 400px;
+    text-align: center;
+}
+
+.notification {
+    background-color: var(--notificacion-fondo);
+    color: var(--notificacion-texto);
+    padding: 15px 25px;
+    border-radius: 25px;
+    font-family: 'Quicksand', 'Noto Sans', sans-serif;
+    font-size: 1.1em;
+    font-weight: 700;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    animation: fadeinout 3s forwards;
+    display: inline-block;
+}
+
+/* Animación de la notificación */
+@keyframes fadeinout {
+    0% { opacity: 0; transform: translateY(-20px); }
+    10% { opacity: 1; transform: translateY(0); }
+    90% { opacity: 1; transform: translateY(0); }
+    100% { opacity: 0; transform: translateY(-20px); }
+}
+
+/* Responsividad */
+@media (max-width: 768px) {
+    body {
+        padding: 10px;
+    }
+
+    .main-title {
+        font-size: 2em;
+    }
+
+    .grid-container {
+        grid-template-columns: 1fr;
+    }
+
+    .semestre {
+        margin-bottom: 15px;
+    }
+}
